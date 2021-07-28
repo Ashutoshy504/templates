@@ -1,0 +1,23 @@
+vector <int> bfs(vector<int> g[], int N) {
+
+    // Your code here
+    queue<int> q;
+    vector<int> ans;
+     bool b[N] = {false};
+     q.push(0);
+     b[0]=true;
+     while(!q.empty()){
+         
+             for(int i : g[q.front()]){
+                 if(!b[i]){
+                     b[i]=true;
+                     q.push(i);
+                 }
+                 
+             
+         }
+          ans.push_back(q.front());
+                 q.pop();
+     }
+     return ans;
+}

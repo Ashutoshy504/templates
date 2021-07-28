@@ -1,0 +1,23 @@
+vertical traversal 
+vector<vector<int> > Solution::verticalOrderTraversal(TreeNode* A) {
+    vector<vector<int>> ans ;
+    if(A == NULL) return ans;
+    map<int , vector<int > > mp;
+    queue< pair<TreeNode* , int >> qu;
+    qu.push({A , 0});
+    while(!qu.empty()){
+        int n  = qu.size();
+        while(n--){
+            pair<TreeNode* , int > temp = qu.front() ;  qu.pop();
+            mp[temp.second].push_back(temp.first -> val);
+            if(temp.first -> left){
+                qu.push({temp.first -> left,temp.second -1 });
+            }
+            if(temp.first -> right){
+                qu.push({temp.first -> right,temp.second +1} );
+            }
+        }
+    }
+    for(auto x : mp) ans.push_back(x.second);
+    return ans;
+}

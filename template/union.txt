@@ -1,0 +1,23 @@
+int a[n+1] , sz[n+1];
+  for(int i=1;i<n+1;++i){
+      a[i]=i;
+      sz[i]=1;
+    }
+    int u ,v ,tempu ,tempv;
+      while(m--)
+    {  //  cout<<m<<endl;
+        cin>>u>>v;
+        tempu=u;  tempv=v;
+        while(tempu!=a[tempu])
+        tempu=a[tempu];
+        while(tempv!=a[tempv])  tempv=a[tempv];
+        if(tempu==tempv) continue;
+        if(tempu<tempv)
+        {a[tempu]=a[tempv];
+        sz[tempv]+=sz[tempu];}
+        else
+        {
+            a[tempv]=a[tempu];
+        sz[tempu]+=sz[tempv];
+        }
+    }

@@ -1,0 +1,19 @@
+void heapify(int a[] , int i,int k){
+    int l = 2*i+1;
+    int r = 2*i+2;
+    int lar = i;
+    if (l < k && a[l] > a[i])
+        lar = l;
+    if (r < k && a[r] > a[lar])
+        lar = r;
+    if (lar != i)
+    {
+        swap(a[i], a[lar]);
+        heapify(a,lar,k);
+    }
+}
+void minheap(int a[] , int k){
+    for(int i =  k/2-1 ; i>=0 ; i--){
+        heapify(a,i,k);
+    }
+}
